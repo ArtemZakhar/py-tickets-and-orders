@@ -123,7 +123,8 @@ class Ticket(models.Model):
                 f"{self.movie_session.cinema_hall.seats_in_row})"
             )
 
-        raise ValidationError(errors)
+        if len(errors.keys()) > 0:
+            raise ValidationError(errors)
 
     def __str__(self) -> str:
         return (
